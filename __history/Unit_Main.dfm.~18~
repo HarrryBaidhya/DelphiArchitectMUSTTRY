@@ -1,0 +1,66 @@
+object Form_Main: TForm_Main
+  Left = 0
+  Top = 0
+  Caption = 'Oracle2PG'
+  ClientHeight = 484
+  ClientWidth = 749
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  KeyPreview = True
+  OldCreateOrder = False
+  Position = poScreenCenter
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 749
+    Height = 484
+    Align = alClient
+    TabOrder = 0
+    object BitBtn_Department: TBitBtn
+      Left = 8
+      Top = 72
+      Width = 153
+      Height = 25
+      Caption = 'Departments'
+      TabOrder = 0
+      OnClick = BitBtn_DepartmentClick
+    end
+    object BitBtn1: TBitBtn
+      Left = 8
+      Top = 10
+      Width = 153
+      Height = 25
+      Caption = 'Users'
+      TabOrder = 1
+      OnClick = BitBtn1Click
+    end
+  end
+  object BitBtn_Users: TBitBtn
+    Left = 8
+    Top = 41
+    Width = 153
+    Height = 25
+    Caption = 'Users'
+    TabOrder = 1
+    OnClick = BitBtn_UsersClick
+  end
+  object UniQuery_Get: TUniQuery
+    Left = 560
+    Top = 32
+  end
+  object UniQuery_Put: TUniQuery
+    Left = 608
+    Top = 32
+  end
+  object UniScript: TUniScript
+    Connection = DM.Connection_Source
+    Left = 368
+    Top = 248
+  end
+end

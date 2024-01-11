@@ -1,0 +1,13 @@
+object DM: TDM
+  OldCreateOrder = False
+  Height = 150
+  Width = 215
+  object Connection_Source: TFDConnection
+    Left = 88
+    Top = 56
+  end
+  object Connection_Destination: TFDConnection
+    Left = 120
+    Top = 32
+  end
+end

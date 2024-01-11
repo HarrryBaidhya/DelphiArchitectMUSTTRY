@@ -1,0 +1,13 @@
+object DM: TDM
+  OldCreateOrder = False
+  Height = 150
+  Width = 215
+  object Connection_Source: TADOConnection
+    Left = 64
+    Top = 16
+  end
+  object Connection_Dest: TADOConnection
+    Left = 104
+    Top = 72
+  end
+end

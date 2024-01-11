@@ -1,0 +1,21 @@
+object DM: TDM
+  OldCreateOrder = False
+  Height = 150
+  Width = 215
+  object Connection_Source: TUniConnection
+    Left = 24
+    Top = 16
+  end
+  object Connection_Dest: TUniConnection
+    Left = 88
+    Top = 64
+  end
+  object OracleUniProvider1: TOracleUniProvider
+    Left = 168
+    Top = 72
+  end
+  object PostgreSQLUniProvider1: TPostgreSQLUniProvider
+    Left = 144
+    Top = 16
+  end
+end
