@@ -3,8 +3,17 @@ object DM: TDM
   Height = 343
   Width = 601
   object Connection_Source: TUniConnection
+    ProviderName = 'Oracle'
+    Port = 1521
+    Database = 'hospital'
+    SpecificOptions.Strings = (
+      'Oracle.Direct=True')
+    Username = 'hearttoheart_user'
+    Server = 'localhost:1521/hospital'
+    LoginPrompt = False
     Left = 320
     Top = 96
+    EncryptedPassword = '8FFF88FF9BFFA0FF97FF9AFF9EFF8DFF8BFF8BFF90FF97FF9AFF9EFF8DFF8BFF'
   end
   object Connection_UM: TUniConnection
     Left = 384

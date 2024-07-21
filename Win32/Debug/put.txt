@@ -1,0 +1,12 @@
+insert into users(id,name,username,email,"password",created_at,created_by,is_active,archived_at,archived_by) values(
+1
+,'MIDAS'
+,'MIDAS'
+,'midas@midas.com'
+,'81dc9bdb52d04dc20036dbd8313ed055'
+,'2024-02-04 00:00:00'
+,'1'
+,'Y'
+,NULL
+,NULL
+)

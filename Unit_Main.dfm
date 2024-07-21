@@ -24,7 +24,7 @@ object Form_Main: TForm_Main
     TabOrder = 0
     object BitBtn_Department: TBitBtn
       Left = 8
-      Top = 72
+      Top = 73
       Width = 153
       Height = 25
       Caption = 'Departments'
@@ -51,12 +51,69 @@ object Form_Main: TForm_Main
     end
     object BitBtn_Patients: TBitBtn
       Left = 8
-      Top = 137
+      Top = 203
       Width = 153
       Height = 25
       Caption = 'Patients'
       TabOrder = 3
       OnClick = BitBtn_PatientsClick
+    end
+    object BitBtn1: TBitBtn
+      Left = 8
+      Top = 170
+      Width = 153
+      Height = 25
+      Caption = 'Scheme && Community'
+      TabOrder = 4
+      OnClick = BitBtn1Click
+    end
+    object BitBtn2: TBitBtn
+      Left = 8
+      Top = 135
+      Width = 153
+      Height = 25
+      Caption = 'Test Package'
+      TabOrder = 5
+      OnClick = BitBtn2Click
+    end
+    object TPanel
+      Left = 1
+      Top = 442
+      Width = 747
+      Height = 41
+      Align = alBottom
+      TabOrder = 6
+      object Label1: TLabel
+        AlignWithMargins = True
+        Left = 4
+        Top = 4
+        Width = 5
+        Height = 19
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -16
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+      end
+      object ProgressBar1: TProgressBar
+        Left = 1
+        Top = 1
+        Width = 745
+        Height = 39
+        Align = alClient
+        Step = 1
+        TabOrder = 0
+      end
+    end
+    object BitBtn3: TBitBtn
+      Left = 8
+      Top = 234
+      Width = 153
+      Height = 25
+      Caption = 'Patient Visits'
+      TabOrder = 7
+      OnClick = BitBtn3Click
     end
   end
   object BitBtn_Users: TBitBtn

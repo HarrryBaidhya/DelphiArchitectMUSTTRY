@@ -22,18 +22,18 @@ procedure startup;
 var
 ls_connectionString:string;
 begin
-     gs_orgnamecode := 'HEARTTOHEART';
-     gs_Srcdbusername := 'HEARTTOHEART_USER';
-     gs_Srcdbpassword := 'PWD_HEARTTOHEART';
-     gs_Srcdbserver := '127.0.0.1';
+     gs_orgnamecode := 'PPL';
+     gs_Srcdbusername := 'PPL_USER';
+     gs_Srcdbpassword := 'PWD_PPL';
+     gs_Srcdbserver := 'localhost';
      gs_Srcdbport := '1521';
-     gs_Srcdatabase := 'orcl';
+     gs_Srcdatabase := 'hospital';
      DM := TDM.Create(nil);
      with DM.Connection_Source do
      begin
           Connected := False;
           ProviderName := 'Oracle';
-          Server := gs_Srcdbserver;
+          Server := gs_Srcdbserver+':'+gs_Srcdbport+'/'+gs_Srcdatabase;
           Port := StrToInt(gs_Srcdbport); // Assuming gs_Srcdbport is a string representation of the port
           Database := gs_Srcdatabase;
           Username := gs_Srcdbusername;
@@ -44,9 +44,9 @@ begin
 
 
      gs_desdbusername := 'postgres';
-     gs_desdbpassword := 'password';
-     gs_desdbserver := '192.168.130.119';
-     gs_Desdbport := '5432';
+     gs_desdbpassword := 'um-4GukbyTD';
+     gs_desdbserver := 'pphl.midashealthservices.com.np';
+     gs_Desdbport := '5436';
      gs_desdatabase := 'user_management';
 
      with DM.Connection_UM do
@@ -63,8 +63,8 @@ begin
      end;
 
      gs_desdbusername := 'postgres';
-     gs_desdbpassword := 'password';
-     gs_desdbserver := '192.168.130.119';
+     gs_desdbpassword := 'pa-hdfjus8d';
+     gs_desdbserver := 'pphl.midashealthservices.com.np';
      gs_Desdbport := '5434';
      gs_desdatabase := 'pa';
 
@@ -82,8 +82,8 @@ begin
      end;
 
      gs_desdbusername := 'postgres';
-     gs_desdbpassword := 'password';
-     gs_desdbserver := '192.168.130.119';
+     gs_desdbpassword := 'lab-S9fswa3';
+     gs_desdbserver := 'pphl.midashealthservices.com.np';
      gs_Desdbport := '5433';
      gs_desdatabase := 'lab';
 
