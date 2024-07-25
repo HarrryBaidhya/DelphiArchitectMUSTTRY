@@ -1,0 +1,147 @@
+unit fxn;
+
+interface
+uses
+   Unit_DM,Messages,Dialogs,System.SysUtils,Uni,IniFiles;
+var
+gs_Srcdatabase,gs_Srcdbusername, gs_Srcdbpassword,
+gs_Srcdbserver,gs_Srcdbport:string;
+
+gs_Desdatabase,gs_Desdbusername, gs_Desdbpassword,
+gs_Desdbserver,gs_Desdbport:string;
+/// Orcale Parameter
+gs_UserNameIni,gs_PasswordIni,gs_ServerPortIni,gs_DatabaseSourceIni,gs_OrganizationCodeIni:string;
+pb_CheckFileExits: Boolean;
+gs_SrcConnection, gs_Connection_UM, gs_Connection_PA, gs_Connection_Lab: TUniConnection;
+
+gs_orgnamecode:string;
+ save: TIniFile;
+
+procedure Startup;
+function checkIfFileExits: Boolean;
+
+implementation
+
+procedure startup;
+var
+ls_connectionString:string;
+begin
+    // gs_orgnamecode := 'PPL';
+     gs_Srcdbusername := gs_Username_orcl_Ini;
+     gs_Srcdbpassword := gs_Password_orcl_Ini;
+     gs_Srcdbserver := gs_Srcdbserverini;
+     gs_Srcdbport := gs_ServerportIni;
+     gs_Srcdatabase := 'hospital';
+     DM := TDM.Create(nil);
+     with DM.Connection_Source do
+     begin
+          Connected := False;
+          ProviderName := 'Oracle';
+          Server := gs_Srcdbserver+':'+gs_Srcdbport+'/'+gs_Srcdatabase;
+          Port := StrToInt(gs_Srcdbport); // Assuming gs_Srcdbport is a string representation of the port
+          Database := gs_Srcdatabase;
+          Username := gs_Srcdbusername;
+          Password := gs_Srcdbpassword;
+          SpecificOptions.Values['Oracle.Direct'] := 'True'; // Set to 'False' if not using Direct mode
+          Connected := True;
+     end;
+
+
+     gs_desdbusername := 'postgres';
+     gs_desdbpassword := 'um-4GukbyTD';
+     gs_desdbserver := 'pphl.midashealthservices.com.np';
+     gs_Desdbport := '5436';
+     gs_desdatabase := 'user_management';
+
+     with DM.Connection_UM do
+     begin
+          ProviderName := 'PostgreSQL';
+          Server := gs_Desdbserver;
+          Port := StrToInt(gs_Desdbport); // Assuming gs_Desdbport is a string representation of the port
+          Database := gs_Desdatabase;
+          Username := gs_Desdbusername;
+          Password := gs_Desdbpassword;
+          SpecificOptions.Values['PostgreSQL.ProtocolVersion'] := 'pv30'; // Adjust the protocol version if needed
+          Connected := True;
+
+     end;
+
+     gs_desdbusername := 'postgres';
+     gs_desdbpassword := 'pa-hdfjus8d';
+     gs_desdbserver := 'pphl.midashealthservices.com.np';
+     gs_Desdbport := '5434';
+     gs_desdatabase := 'pa';
+
+     with DM.Connection_PA do
+     begin
+          ProviderName := 'PostgreSQL';
+          Server := gs_Desdbserver;
+          Port := StrToInt(gs_Desdbport); // Assuming gs_Desdbport is a string representation of the port
+          Database := gs_Desdatabase;
+          Username := gs_Desdbusername;
+          Password := gs_Desdbpassword;
+          SpecificOptions.Values['PostgreSQL.ProtocolVersion'] := 'pv30'; // Adjust the protocol version if needed
+          Connected := True;
+
+     end;
+
+     gs_desdbusername := 'postgres';
+     gs_desdbpassword := 'lab-S9fswa3';
+     gs_desdbserver := 'pphl.midashealthservices.com.np';
+     gs_Desdbport := '5433';
+     gs_desdatabase := 'lab';
+
+     with DM.Connection_Lab do
+     begin
+          ProviderName := 'PostgreSQL';
+          Server := gs_Desdbserver;
+          Port := StrToInt(gs_Desdbport); // Assuming gs_Desdbport is a string representation of the port
+          Database := gs_Desdatabase;
+          Username := gs_Desdbusername;
+          Password := gs_Desdbpassword;
+          SpecificOptions.Values['PostgreSQL.ProtocolVersion'] := 'pv30'; // Adjust the protocol version if needed
+          Connected := True;
+
+     end;
+
+     gs_SrcConnection:=  DM.Connection_Source;
+     gs_Connection_UM:=  DM.Connection_UM;
+     gs_Connection_PA:=  DM.Connection_PA;
+     gs_Connection_Lab:=  DM.Connection_Lab
+end;
+
+function checkIfFileExits: Boolean;
+begin
+     if FileExists(ExtractFilePath(ParamStr(0)) + 'IrdInfo.ini') then
+     begin
+          save := TIniFile.Create(ExtractFilePath(ParamStr(0)) + 'IrdInfo.ini');
+         // save:=TIniFile.Create(gs_IrdInfopath+'\'+'IrdInfo.ini');
+         //for oracleDatabse
+           gs_UserNameIni := save.ReadString('Oracle', 'UserName', '');
+           gs_PasswordIni := save.ReadString('Oracle', 'Password', '');
+           gs_ServerportIni := save.ReadString('Oracle', 'ServerPort', '');
+           gs_OrganizationCodeIni := save.ReadString('Oracle', 'OragnizationCode', '');
+           gs_DatabaseSourceIni := save.ReadString('Oracle', 'DatabaseSource', '');
+           pb_CheckFileExits := True;
+          if ((gs_UserNameIni = '') and (gs_PasswordIni = '') and (gs_ServerPortIni = '') and ( gs_DatabaseSourceIni='')) then
+          begin
+               Result := False;
+
+          end
+          else
+          begin
+               Result := True;
+//              InitialPhase;
+          end;
+     end
+     else
+     begin
+
+          Result := False;
+     end;
+
+end;
+
+
+
+end.

@@ -1,0 +1,109 @@
+unit Unit_CreateUser;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls,IniFiles;
+
+type
+  TForm_CreateUser = class(TForm)
+    Btn_Save: TButton;
+    Btn_Close: TButton;
+    Lbl_Username: TLabel;
+    Edit_UserName: TEdit;
+    Label1: TLabel;
+    Edit_password: TEdit;
+    Label2: TLabel;
+    Edit_OrganizationCode: TEdit;
+    Edit_ServerPort: TEdit;
+    Edit_DatabaseSource: TEdit;
+    Label3: TLabel;
+    Label4: TLabel;
+    Combo_ProviderName: TComboBox;
+    Text_ServerName: TLabel;
+    Edit_ServerName: TEdit;
+    Upperpanel: TPanel;
+    Label5: TLabel;
+    procedure Btn_CloseClick(Sender: TObject);
+    procedure Btn_SaveClick(Sender: TObject);
+    procedure Combo_ProviderNameDblClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure Combo_ProviderNameClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form_CreateUser: TForm_CreateUser;
+    save:TIniFile;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm_CreateUser.Btn_CloseClick(Sender: TObject);
+begin
+ close;
+end;
+
+procedure TForm_CreateUser.Btn_SaveClick(Sender: TObject);
+var
+Ls_providerName:string;
+begin
+          ls_ProviderName := Combo_ProviderName.Text;
+          save:=TIniFile.Create(ExtractFilePath(ParamStr(0))+'OracleInfo.ini');
+          save.WriteString(ls_ProviderName,'UserName',Edit_Username.text);
+          save.WriteString(ls_ProviderName,'Password',Edit_Password.text);
+          save.WriteString(ls_ProviderName,'ServerPort',Edit_ServerPort.text);
+          save.WriteString(ls_ProviderName,'OragnizationCode',Edit_OrganizationCode.text);
+          save.WriteString(ls_ProviderName,'DatabaseSource',Edit_DatabaseSource.text);
+          save.WriteString(ls_ProviderName,'ServerName',Edit_ServerName.text);
+          showmessage('Data Save Sucessfully! Closing Exe!');
+          save.Free;
+          Application.Terminate
+
+end;
+
+procedure TForm_CreateUser.Combo_ProviderNameClick(Sender: TObject);
+begin
+  if Combo_ProviderName.Text='Postgresql' then
+begin
+  Edit_DatabaseName.Enabled:=True;
+  Edit_DatabaseName.Visible:=True;
+  label_DatabaseName.Visible:=True;
+end
+else
+ begin
+ Edit_DatabaseName.Enabled:=False;
+ Edit_DatabaseName.Visible:=False;
+ label_DatabaseName.Visible:=False;
+ end;
+end;
+
+procedure TForm_CreateUser.Combo_ProviderNameDblClick(Sender: TObject);
+begin
+if Combo_ProviderName.Text='Postgresql' then
+begin
+  Edit_DatabaseName.Enabled:=True;
+  Edit_DatabaseName.Visible:=True;
+  label_DatabaseName.Visible:=True;
+end
+else
+ begin
+ Edit_DatabaseName.Enabled:=False;
+ Edit_DatabaseName.Visible:=False;
+ label_DatabaseName.Visible:=False;
+ end;
+end;
+
+procedure TForm_CreateUser.FormShow(Sender: TObject);
+begin
+   Edit_DatabaseName.Enabled:=False;
+   Edit_DatabaseName.Visible:=False;
+   label_DatabaseName.Visible:=False;
+end;
+
+end.

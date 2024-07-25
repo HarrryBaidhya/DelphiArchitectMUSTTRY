@@ -1,0 +1,167 @@
+object Form_CreateUser: TForm_CreateUser
+  Left = 0
+  Top = 0
+  Caption = 'Form_CreateUser'
+  ClientHeight = 379
+  ClientWidth = 676
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poDesktopCenter
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Upperpanel: TPanel
+    Left = 0
+    Top = 0
+    Width = 676
+    Height = 41
+    Align = alTop
+    TabOrder = 0
+    object Btn_Save: TButton
+      Left = 465
+      Top = 2
+      Width = 105
+      Height = 39
+      BiDiMode = bdRightToLeft
+      Caption = 'Save'
+      ParentBiDiMode = False
+      TabOrder = 0
+      OnClick = Btn_SaveClick
+    end
+    object Btn_Close: TButton
+      Left = 569
+      Top = 1
+      Width = 105
+      Height = 39
+      BiDiMode = bdRightToLeft
+      Caption = 'Close'
+      ParentBiDiMode = False
+      TabOrder = 1
+      OnClick = Btn_CloseClick
+    end
+  end
+  object TPanel
+    Left = 0
+    Top = 41
+    Width = 676
+    Height = 338
+    Align = alClient
+    TabOrder = 1
+    ExplicitTop = 46
+    object Lbl_Username: TLabel
+      Left = 39
+      Top = 74
+      Width = 81
+      Height = 16
+      AutoSize = False
+      Caption = 'User Name'
+    end
+    object Label1: TLabel
+      Left = 39
+      Top = 112
+      Width = 84
+      Height = 16
+      AutoSize = False
+      Caption = 'PassWord'
+    end
+    object Label2: TLabel
+      Left = 36
+      Top = 10
+      Width = 114
+      Height = 16
+      AutoSize = False
+      Caption = 'Organization Code'
+    end
+    object Label3: TLabel
+      Left = 38
+      Top = 153
+      Width = 78
+      Height = 16
+      AutoSize = False
+      Caption = 'Server Port'
+    end
+    object Label4: TLabel
+      Left = 38
+      Top = 205
+      Width = 114
+      Height = 16
+      AutoSize = False
+      Caption = 'Database Source'
+    end
+    object Text_ServerName: TLabel
+      Left = 36
+      Top = 179
+      Width = 103
+      Height = 13
+      AutoSize = False
+      Caption = 'ServerName/ IP'
+    end
+    object Label5: TLabel
+      Left = 38
+      Top = 38
+      Width = 81
+      Height = 16
+      AutoSize = False
+      Caption = 'Provider Name'
+    end
+    object Edit_UserName: TEdit
+      Left = 167
+      Top = 73
+      Width = 178
+      Height = 21
+      TabOrder = 0
+    end
+    object Edit_password: TEdit
+      Left = 167
+      Top = 108
+      Width = 178
+      Height = 21
+      TabOrder = 1
+    end
+    object Edit_OrganizationCode: TEdit
+      Left = 167
+      Top = 7
+      Width = 180
+      Height = 21
+      TabOrder = 2
+    end
+    object Edit_ServerPort: TEdit
+      Left = 167
+      Top = 151
+      Width = 178
+      Height = 21
+      TabOrder = 3
+    end
+    object Edit_DatabaseSource: TEdit
+      Left = 165
+      Top = 202
+      Width = 180
+      Height = 22
+      TabOrder = 4
+    end
+    object Combo_ProviderName: TComboBox
+      Left = 167
+      Top = 36
+      Width = 180
+      Height = 21
+      TabOrder = 5
+      Text = 'Choose DataSource'
+      Items.Strings = (
+        'Oracle'
+        'UM'
+        'PA'
+        'LAB ')
+    end
+    object Edit_ServerName: TEdit
+      Left = 167
+      Top = 176
+      Width = 180
+      Height = 21
+      TabOrder = 6
+    end
+  end
+end

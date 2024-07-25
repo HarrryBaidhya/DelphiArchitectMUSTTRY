@@ -108,6 +108,10 @@
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
+        <DCCReference Include="Unit_CreateUser.pas">
+            <Form>Form_CreateUser</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <None Include="ModelSupport_Oracle2PG\default.txaPackage"/>
         <None Include="ModelSupport_Oracle2PG\Oracle2PG\default.txaPackage"/>
         <None Include="ModelSupport_Oracle2PG\Oracle2PG\default.txvpck"/>

@@ -1,0 +1,77 @@
+unit Unit_CreateUser;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls,IniFiles;
+
+type
+  TForm_CreateUser = class(TForm)
+    Btn_Save: TButton;
+    Btn_Close: TButton;
+    Lbl_Username: TLabel;
+    Edit_UserName: TEdit;
+    Label1: TLabel;
+    Edit_password: TEdit;
+    Label2: TLabel;
+    Edit_OrganizationCode: TEdit;
+    Edit_ServerPort: TEdit;
+    Edit_DatabaseSource: TEdit;
+    Label3: TLabel;
+    Label4: TLabel;
+    Combo_ProviderName: TComboBox;
+    Text_ServerName: TLabel;
+    Edit_ServerName: TEdit;
+    Upperpanel: TPanel;
+    Label5: TLabel;
+    procedure Btn_CloseClick(Sender: TObject);
+    procedure Btn_SaveClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form_CreateUser: TForm_CreateUser;
+    save:TIniFile;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm_CreateUser.Btn_CloseClick(Sender: TObject);
+begin
+ close;
+end;
+
+procedure TForm_CreateUser.Btn_SaveClick(Sender: TObject);
+var
+Ls_providerName, ls_oracle, ls_um, ls_pa,ls_lab:string;
+begin
+          ls_ProviderName := Combo_ProviderName.Text;
+          save:=TIniFile.Create(ExtractFilePath(ParamStr(0))+'OracleInfo.ini');
+          save.WriteString(ls_ProviderName,'UserName',Edit_Username.text);
+          save.WriteString(ls_ProviderName,'Password',Edit_Password.text);
+          save.WriteString(ls_ProviderName,'ServerPort',Edit_ServerPort.text);
+          save.WriteString(ls_ProviderName,'OragnizationCode',Edit_OrganizationCode.text);
+          save.WriteString(ls_ProviderName,'DatabaseSource',Edit_DatabaseSource.text);
+          save.WriteString(ls_ProviderName,'ServerName',Edit_ServerName.text);
+          showmessage('Data Save Sucessfully! Closing Exe!');
+
+
+          ls_oracle := save.ReadString('Oracle','UserName',Edit_Username.text);
+
+          ls_um := save.ReadString('UM','UserName',Edit_Username.text);
+
+          ls_pa := save.ReadString('PA','UserName',Edit_Username.text);
+
+           ls_lab := save.ReadString('LAB','UserName',Edit_Username.text);
+
+          save.Free;
+          Application.Terminate
+
+end;
+
+end.
